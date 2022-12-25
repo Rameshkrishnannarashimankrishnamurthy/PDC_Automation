@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="1" time="6.483274">
+<testcase classname="EventsPage" name="Validate that User is able to navigate  to &quot;Events page&quot; from &quot;Home Page&quot;" time="6.483274">
+<system-out><![CDATA[Given User is able to launch web browser and PDC website is loaded..........passed
+When User clicks on all the members of our "Our Volunteers" of PDC..........passed
+And Validate the PDC team "Our Volunteers" list.............................passed
+]]></system-out>
+</testcase>
+</testsuite>

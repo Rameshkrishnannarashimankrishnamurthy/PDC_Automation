@@ -1,0 +1,112 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 5061430800,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.openBrowser()"
+            }
+          }
+        ],
+        "line": 11,
+        "name": "Validate that User is able to navigate  to \"Events page\" from \"Home Page\"",
+        "description": "",
+        "id": "eventspage;validate-that-user-is-able-to-navigate--to-\"events-page\"-from-\"home-page\";;2",
+        "after": [
+          {
+            "result": {
+              "duration": 665540800,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.embedScreenshot(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 172594900,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "User is able to launch web browser and PDC website is loaded",
+            "match": {
+              "location": "HomePageSteps.userIsAbleToLaunchWebBrowserAndPDCWebsiteIsLoaded()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 180074500,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "User clicks on all the members of our \"Our Volunteers\" of PDC",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Our Volunteers",
+                  "offset": 39
+                }
+              ],
+              "location": "HomePageSteps.userClicksOnAllTheMembersOfOurOfPDC(String)"
+            },
+            "matchedColumns": [
+              0
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 403632500,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "Validate the PDC team \"Our Volunteers\" list",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Our Volunteers",
+                  "offset": 23
+                }
+              ],
+              "location": "TeamsPageSteps.validateThePDCTeamList(String)"
+            },
+            "matchedColumns": [
+              0
+            ],
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "line": 3,
+            "name": "@Test3"
+          },
+          {
+            "line": 3,
+            "name": "@SomeTags"
+          },
+          {
+            "line": 3,
+            "name": "@ValidCase"
+          }
+        ]
+      }
+    ],
+    "name": "EventsPage",
+    "description": "",
+    "id": "eventspage",
+    "keyword": "Feature",
+    "uri": "TeamsPage.feature"
+  }
+]
