@@ -5,15 +5,15 @@ import org.apache.commons.io.IOUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-import javax.crypto.spec.SecretKeySpec;
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 import java.util.Base64;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Util {
 
@@ -73,4 +73,12 @@ public class Util {
         String decoded = new String(decodedValue,"UTF8");
         return decoded;
     }
+
+    public List stringToJsonToList(String message) throws IOException {
+        JSONArray jsonArray = new JSONArray(message);
+        return IntStream.range(0, jsonArray.length())
+                .mapToObj(index -> ((JSONObject)jsonArray.get(index)).optString("name"))
+                .collect(Collectors.toList());
+    }
+
 }

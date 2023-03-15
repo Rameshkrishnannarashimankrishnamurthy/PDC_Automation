@@ -49,6 +49,16 @@
             <artifactId>json</artifactId>
             <version>20220924</version>
         </dependency>
+        <dependency>
+            <groupId>com.jayway.restassured</groupId>
+            <artifactId>json-schema-validator</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.thegoate</groupId>
+            <artifactId>restassured</artifactId>
+            <version>0.15.17.202212161524</version>
+        </dependency>
     </dependencies>
 
     <build>

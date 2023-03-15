@@ -1,6 +1,8 @@
 package PageObjects;
 
+import PageActions.StudentsPageActions;
 import Utilities.BaseClass;
+import Utilities.Utility;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,6 +15,11 @@ public class StudentsPage extends BaseClass {
         super(driver, wait);
         PageFactory.initElements(driver, this);
     }
+
+    private WebDriverWait wait;
+
+    StudentsPageActions spa = new StudentsPageActions(driver,wait);
+    Utility utility = new Utility();
 
     @FindBy(id = "joinTeam-forStudents")
     private WebElement lnk_joinTeamforStudents;
@@ -48,6 +55,7 @@ public class StudentsPage extends BaseClass {
             case "Join the club as a Volunteer":
                 try {
                     lnk_joinTeamforStudents.click();
+                    spa.joinTheClubAsAVolunteer();
                 }
                 catch (Exception e)
                 {
@@ -56,27 +64,34 @@ public class StudentsPage extends BaseClass {
                 break;
             case "Create or Activate Association":
                 lnk_Create_Activate_Association.click();
+                utility.pageWait();
                 break;
             case "uOttawa Student Associations":
                 lnk_uOttawaStudentAssociationsforStudents.click();
+                utility.pageWait();
                 break;
             case "Programs Recognized by FSWEP":
                 lnk_FSWEPProgramsforStudents.click();
+                utility.pageWait();
                 break;
             case "Useful Resources for New Students":
                 lnk_usefulResourcesforStudents.click();
+                utility.pageWait();
                 break;
             case "Industry Internship Project":
                 lnk_industryInternshipProject.click();
+                utility.pageWait();
                 break;
             case "Resume Writing Guidelines":
                 lnk_resumeWritingGuidelinesforStudents.click();
+                utility.pageWait();
                 break;
             case "Ask for Resume review session with us":
                 lnk_resumeReviewSessionforStudents.click();
                 break;
             case "Frequently Asked Questions":
                 lnk_fAQs.click();
+                utility.pageWait();
                 break;
         }
 

@@ -19,8 +19,8 @@ public class StudentsPageSteps {
         this.wait = new WebDriverWait(driver, propertiesReader.getTimeout());
     }
 
-    @When("^User Click on \"(.*)\" from \"([^\"]*)\"$")
-    public void userClickOnFrom(String item) throws Exception {
+    @When("^User Click on \"(.*)\" from \"(.*)\" in students page$")
+    public void userClickOnFrom(String item,String pagelink) throws Exception {
         // Write code here that turns the phrase above into concrete actions
         studentsPage.pageItems(item);
     }

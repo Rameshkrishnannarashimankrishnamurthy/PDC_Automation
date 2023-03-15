@@ -1,153 +1,163 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("TeamsPage.feature");
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("HomePage.feature");
 formatter.feature({
   "line": 1,
-  "name": "EventsPage",
+  "name": "HomePage",
   "description": "",
-  "id": "eventspage",
+  "id": "homepage",
   "keyword": "Feature"
 });
 formatter.scenarioOutline({
-  "line": 4,
-  "name": "Validate that User is able to navigate  to \"Events page\" from \"Home Page\"",
+  "line": 27,
+  "name": "Validate that User is able to submit \"Contact Us\" form API",
   "description": "",
-  "id": "eventspage;validate-that-user-is-able-to-navigate--to-\"events-page\"-from-\"home-page\"",
+  "id": "homepage;validate-that-user-is-able-to-submit-\"contact-us\"-form-api",
   "type": "scenario_outline",
   "keyword": "Scenario Outline",
   "tags": [
     {
-      "line": 3,
-      "name": "@ValidCase"
+      "line": 26,
+      "name": "@HomePage"
     },
     {
-      "line": 3,
-      "name": "@SomeTags"
+      "line": 26,
+      "name": "@SmokeTest"
     },
     {
-      "line": 3,
+      "line": 26,
+      "name": "@Regression"
+    },
+    {
+      "line": 26,
       "name": "@Test3"
     }
   ]
 });
 formatter.step({
-  "line": 5,
+  "line": 28,
   "name": "User is able to launch web browser and PDC website is loaded",
   "keyword": "Given "
 });
 formatter.step({
-  "line": 6,
-  "name": "User clicks on all the members of our \"\u003cTeam\u003e\" of PDC",
-  "keyword": "When "
-});
-formatter.step({
-  "line": 7,
-  "name": "Validate the PDC team \"\u003cTeam\u003e\" list",
-  "keyword": "And "
+  "line": 29,
+  "name": "User Enters \"\u003cFirstName\u003e\",\"\u003cLastName\u003e\",\"\u003cCategory\u003e\",\"\u003cEmail\u003e\" and \"\u003cMessage\u003e\" in Contact Us form through API",
+  "keyword": "Then "
 });
 formatter.examples({
-  "line": 9,
+  "line": 31,
   "name": "",
   "description": "",
-  "id": "eventspage;validate-that-user-is-able-to-navigate--to-\"events-page\"-from-\"home-page\";",
+  "id": "homepage;validate-that-user-is-able-to-submit-\"contact-us\"-form-api;",
   "rows": [
     {
       "cells": [
-        "Team"
+        "FirstName",
+        "LastName",
+        "Category",
+        "Email",
+        "Message"
       ],
-      "line": 10,
-      "id": "eventspage;validate-that-user-is-able-to-navigate--to-\"events-page\"-from-\"home-page\";;1"
+      "line": 32,
+      "id": "homepage;validate-that-user-is-able-to-submit-\"contact-us\"-form-api;;1"
     },
     {
       "cells": [
-        "Our Volunteers"
+        "TestAutomation",
+        "TestAutomation",
+        "CDC",
+        "testautomationpdc@gmail.com",
+        "This is a test automation scenario please ignore"
       ],
-      "line": 11,
-      "id": "eventspage;validate-that-user-is-able-to-navigate--to-\"events-page\"-from-\"home-page\";;2"
+      "line": 33,
+      "id": "homepage;validate-that-user-is-able-to-submit-\"contact-us\"-form-api;;2"
     }
   ],
   "keyword": "Examples"
 });
 formatter.before({
-  "duration": 5061430800,
+  "duration": 5016369500,
   "status": "passed"
 });
 formatter.scenario({
-  "line": 11,
-  "name": "Validate that User is able to navigate  to \"Events page\" from \"Home Page\"",
+  "line": 33,
+  "name": "Validate that User is able to submit \"Contact Us\" form API",
   "description": "",
-  "id": "eventspage;validate-that-user-is-able-to-navigate--to-\"events-page\"-from-\"home-page\";;2",
+  "id": "homepage;validate-that-user-is-able-to-submit-\"contact-us\"-form-api;;2",
   "type": "scenario",
   "keyword": "Scenario Outline",
   "tags": [
     {
-      "line": 3,
+      "line": 26,
       "name": "@Test3"
     },
     {
-      "line": 3,
-      "name": "@SomeTags"
+      "line": 26,
+      "name": "@HomePage"
     },
     {
-      "line": 3,
-      "name": "@ValidCase"
+      "line": 26,
+      "name": "@Regression"
+    },
+    {
+      "line": 26,
+      "name": "@SmokeTest"
     }
   ]
 });
 formatter.step({
-  "line": 5,
+  "line": 28,
   "name": "User is able to launch web browser and PDC website is loaded",
   "keyword": "Given "
 });
 formatter.step({
-  "line": 6,
-  "name": "User clicks on all the members of our \"Our Volunteers\" of PDC",
+  "line": 29,
+  "name": "User Enters \"TestAutomation\",\"TestAutomation\",\"CDC\",\"testautomationpdc@gmail.com\" and \"This is a test automation scenario please ignore\" in Contact Us form through API",
   "matchedColumns": [
-    0
+    0,
+    1,
+    2,
+    3,
+    4
   ],
-  "keyword": "When "
-});
-formatter.step({
-  "line": 7,
-  "name": "Validate the PDC team \"Our Volunteers\" list",
-  "matchedColumns": [
-    0
-  ],
-  "keyword": "And "
+  "keyword": "Then "
 });
 formatter.match({
   "location": "HomePageSteps.userIsAbleToLaunchWebBrowserAndPDCWebsiteIsLoaded()"
 });
 formatter.result({
-  "duration": 172594900,
+  "duration": 132093600,
   "status": "passed"
 });
 formatter.match({
   "arguments": [
     {
-      "val": "Our Volunteers",
-      "offset": 39
-    }
-  ],
-  "location": "HomePageSteps.userClicksOnAllTheMembersOfOurOfPDC(String)"
-});
-formatter.result({
-  "duration": 180074500,
-  "status": "passed"
-});
-formatter.match({
-  "arguments": [
+      "val": "TestAutomation",
+      "offset": 13
+    },
     {
-      "val": "Our Volunteers",
-      "offset": 23
+      "val": "TestAutomation",
+      "offset": 30
+    },
+    {
+      "val": "CDC",
+      "offset": 47
+    },
+    {
+      "val": "testautomationpdc@gmail.com",
+      "offset": 53
+    },
+    {
+      "val": "This is a test automation scenario please ignore",
+      "offset": 87
     }
   ],
-  "location": "TeamsPageSteps.validateThePDCTeamList(String)"
+  "location": "HomePageSteps.userEntersAndInContactUsFormThroughAPI(String,String,String,String,String)"
 });
 formatter.result({
-  "duration": 403632500,
+  "duration": 961411400,
   "status": "passed"
 });
 formatter.after({
-  "duration": 665540800,
+  "duration": 619189200,
   "status": "passed"
 });
 });

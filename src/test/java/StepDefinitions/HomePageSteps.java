@@ -35,7 +35,7 @@ public class HomePageSteps {
     }
 
     @Then("^User Clicks on Send Message button$")
-    public void userClicksOnSendMessageButton() {
+    public void userClicksOnSendMessageButton() throws Exception {
         home.sendbutton();
     }
 
@@ -49,5 +49,11 @@ public class HomePageSteps {
     public void userClicksOnAllTheMembersOfOurOfPDC(String team) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
         home.selectTheTeam(team);
+    }
+
+    @Then("^User Enters \"(.*)\",\"(.*)\",\"(.*)\",\"(.*)\" and \"(.*)\" in Contact Us form through API$")
+    public void userEntersAndInContactUsFormThroughAPI(String firstName, String secondName, String category, String emailId, String message) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        home.setContactUsAPI(firstName, secondName, category, emailId, message);
     }
 }

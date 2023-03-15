@@ -1,33 +1,77 @@
 package Utilities;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+
+import static io.restassured.RestAssured.baseURI;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.IsEqual.equalTo;
 
 public class RequestClass {
+    Response response;
+    public String getMethod(String url) {
 
-    public void method() {
+        String statusMessage = null;
         try {
-            URL url = new URL("https://uottawa-pdcweb.herokuapp.com/ourVolunteers/all");
-            HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
-            // Set the request method to GET
-            con.setRequestMethod("GET");
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-            String inputLine;
-            StringBuilder response = new StringBuilder();
-            while ((inputLine = in.readLine()) != null) {
-                response.append(inputLine);
-            }
-            in.close();
-
-            // Print the response
-            System.out.println(response.toString());
+            baseURI = url;
+            RequestSpecification request = RestAssured.given();
+            response = request.get();
+            statusMessage = getResponseBody();
+            getResponseStatus();
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        return statusMessage;
     }
 
+    public String postMethod(String url,String query) {
+
+        String statusMessage = null;
+        try {
+
+            baseURI = url;
+            statusMessage = postResponseBody(query);
+            postResponseStatus();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return statusMessage;
+    }
+
+    private String getResponseBody() throws Exception {
+        try {
+            String statusMessage = response.body().asString();
+            return statusMessage;
+        }
+        catch (Exception e) {
+            throw new Exception(e);
+        }
+
+    }
+
+    private String postResponseBody(String query) throws Exception {
+        try {
+                response = given().contentType(ContentType.JSON).body(query).when().post(baseURI);
+                String statusMessage = response.body().asString();
+            return statusMessage;
+        }
+        catch (Exception e) {
+            throw new Exception(e);
+        }
+
+    }
+
+    private void getResponseStatus() {
+       given().when().get(baseURI).then().assertThat().statusCode(200);
+    }
+
+    private void postResponseStatus() {
+        assertThat(response.getStatusCode(), equalTo(200));
+    }
 }

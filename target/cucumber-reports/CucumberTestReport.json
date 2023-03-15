@@ -6,7 +6,7 @@
         "before": [
           {
             "result": {
-              "duration": 5061430800,
+              "duration": 5016369500,
               "status": "passed"
             },
             "match": {
@@ -14,14 +14,14 @@
             }
           }
         ],
-        "line": 11,
-        "name": "Validate that User is able to navigate  to \"Events page\" from \"Home Page\"",
+        "line": 33,
+        "name": "Validate that User is able to submit \"Contact Us\" form API",
         "description": "",
-        "id": "eventspage;validate-that-user-is-able-to-navigate--to-\"events-page\"-from-\"home-page\";;2",
+        "id": "homepage;validate-that-user-is-able-to-submit-\"contact-us\"-form-api;;2",
         "after": [
           {
             "result": {
-              "duration": 665540800,
+              "duration": 619189200,
               "status": "passed"
             },
             "match": {
@@ -34,10 +34,10 @@
         "steps": [
           {
             "result": {
-              "duration": 172594900,
+              "duration": 132093600,
               "status": "passed"
             },
-            "line": 5,
+            "line": 28,
             "name": "User is able to launch web browser and PDC website is loaded",
             "match": {
               "location": "HomePageSteps.userIsAbleToLaunchWebBrowserAndPDCWebsiteIsLoaded()"
@@ -46,67 +46,70 @@
           },
           {
             "result": {
-              "duration": 180074500,
+              "duration": 961411400,
               "status": "passed"
             },
-            "line": 6,
-            "name": "User clicks on all the members of our \"Our Volunteers\" of PDC",
+            "line": 29,
+            "name": "User Enters \"TestAutomation\",\"TestAutomation\",\"CDC\",\"testautomationpdc@gmail.com\" and \"This is a test automation scenario please ignore\" in Contact Us form through API",
             "match": {
               "arguments": [
                 {
-                  "val": "Our Volunteers",
-                  "offset": 39
-                }
-              ],
-              "location": "HomePageSteps.userClicksOnAllTheMembersOfOurOfPDC(String)"
-            },
-            "matchedColumns": [
-              0
-            ],
-            "keyword": "When "
-          },
-          {
-            "result": {
-              "duration": 403632500,
-              "status": "passed"
-            },
-            "line": 7,
-            "name": "Validate the PDC team \"Our Volunteers\" list",
-            "match": {
-              "arguments": [
+                  "val": "TestAutomation",
+                  "offset": 13
+                },
                 {
-                  "val": "Our Volunteers",
-                  "offset": 23
+                  "val": "TestAutomation",
+                  "offset": 30
+                },
+                {
+                  "val": "CDC",
+                  "offset": 47
+                },
+                {
+                  "val": "testautomationpdc@gmail.com",
+                  "offset": 53
+                },
+                {
+                  "val": "This is a test automation scenario please ignore",
+                  "offset": 87
                 }
               ],
-              "location": "TeamsPageSteps.validateThePDCTeamList(String)"
+              "location": "HomePageSteps.userEntersAndInContactUsFormThroughAPI(String,String,String,String,String)"
             },
             "matchedColumns": [
-              0
+              0,
+              1,
+              2,
+              3,
+              4
             ],
-            "keyword": "And "
+            "keyword": "Then "
           }
         ],
         "tags": [
           {
-            "line": 3,
+            "line": 26,
             "name": "@Test3"
           },
           {
-            "line": 3,
-            "name": "@SomeTags"
+            "line": 26,
+            "name": "@HomePage"
           },
           {
-            "line": 3,
-            "name": "@ValidCase"
+            "line": 26,
+            "name": "@Regression"
+          },
+          {
+            "line": 26,
+            "name": "@SmokeTest"
           }
         ]
       }
     ],
-    "name": "EventsPage",
+    "name": "HomePage",
     "description": "",
-    "id": "eventspage",
+    "id": "homepage",
     "keyword": "Feature",
-    "uri": "TeamsPage.feature"
+    "uri": "HomePage.feature"
   }
 ]

@@ -1,7 +1,11 @@
 package PageObjects;
 
+import Enums.Context;
 import Utilities.BaseClass;
+import Utilities.PropertiesReader;
 import Utilities.RequestClass;
+import Utilities.Util;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,31 +22,48 @@ public class TeamsPage extends BaseClass {
         PageFactory.initElements(driver, this);
     }
 
-   /* @FindBy(xpath = "//div[@class='content']/div[@class='header']")
-    private WebElement OurVolunteers;*/
+    Util util = new Util();
 
-    String OurVolunteers = "//div[@class='content']/div[@class='header']";
+    String lst_OurVolunteers = "//div[@class='content']/div[@class='header']";
+
+    String lst_OurTeam = "//*[@class='titleName']";
 
     static List<WebElement> lst_name = new ArrayList<>();
 
     static List<String> name = new ArrayList<>();
+    static List<String> result_lst = new ArrayList<>();
 
     RequestClass request = new RequestClass();
 
-    public void getOurVolunteers() throws Exception {
-        try
-        {
-            lst_name = driver.findElements((By.xpath(OurVolunteers)));
-            for(WebElement name_lst:lst_name)
+    public void getOurVolunteers(String team) throws Exception {
+        try {
+            String Team_Value = null;
+            String message;
+            name.clear();
+            lst_name.clear();
+            if (team.contentEquals("Our Volunteers")) {
+                Team_Value = "ourVolunteers";
+                lst_name = driver.findElements((By.xpath(lst_OurVolunteers)));
+            }
+            else if (team.contentEquals("Our Alumni"))
             {
+                Team_Value = "allAlumni";
+                lst_name = driver.findElements((By.xpath(lst_OurTeam)));
+            }else if(team.contentEquals("Our Team"))
+            {
+                Team_Value = "ourTeam";
+                lst_name = driver.findElements((By.xpath(lst_OurTeam)));
+            }
+            for (WebElement name_lst : lst_name) {
                 name.add(name_lst.getText());
             }
-            request.method();
+            message = request.getMethod(PropertiesReader.getValue(Team_Value));
+            result_lst = util.stringToJsonToList(message);
 
-        }
-        catch (Exception e)
-        {
-            throw new Exception("unalbe to get our volunteers list from web");
+            Assert.assertTrue("There is mismatch in the volunteer displayed", name.containsAll(result_lst));
+
+        } catch (Exception e) {
+            throw new Exception("Unable to get our volunteers list from web");
         }
     }
 }

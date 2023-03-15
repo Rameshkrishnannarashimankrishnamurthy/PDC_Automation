@@ -4,13 +4,14 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resources/features",tags = "@Test3",
+        features = "src/test/resources/features", tags = {"@Test3"},
         glue = "StepDefinitions",
-        format = {
-                "pretty",
-                "html:target/cucumber-reports/cucumber-pretty",
-                "json:target/cucumber-reports/CucumberTestReport.json",
-                "junit:target/cucumber-reports/CucumberTestReport.xml"
-        }
+        monochrome = true, plugin = {
+        "pretty",
+        "html:target/cucumber-reports/cucumber-pretty",
+        "json:target/cucumber-reports/CucumberTestReport.json",
+        "junit:target/cucumber-reports/CucumberTestReport.xml"
+}
 )
-public class TestRunner { }
+public class TestRunner {
+}

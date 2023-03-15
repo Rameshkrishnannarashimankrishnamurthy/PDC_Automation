@@ -1,7 +1,7 @@
 Feature: ProjectsPage
 
   @ValidCase @SomeTags
-  Scenario Outline: Validate that User is able to navigate  to "ProjectsPage" from "Home Page"
+  Scenario Outline: Validate that User is able to navigate  to "<Pagelink>" from "Home Page"
     Given User is able to launch web browser and PDC website is loaded
     When User clicks on "<Pagelink>" tab on Home page's navigation bar
 
@@ -9,7 +9,7 @@ Feature: ProjectsPage
       | Pagelink |
       | Projects |
 
-  @Test2
+  @ValidCase @SomeTags
   Scenario Outline: Validate that the user is able to filter projects based on "<Project Type>","<Hosted By>","<Tags>" selected
     Given User is able to launch web browser and PDC website is loaded
     When User clicks on "<Pagelink>" tab on Home page's navigation bar

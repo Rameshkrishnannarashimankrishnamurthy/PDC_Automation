@@ -45,4 +45,11 @@ public class Utility {
         return currentDate;
     }
 
+    public static void pageWait() throws InterruptedException {
+        synchronized (driver)
+        {
+            driver.wait(5000);
+        }
+    }
+
 }

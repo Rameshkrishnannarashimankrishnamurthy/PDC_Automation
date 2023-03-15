@@ -1,6 +1,8 @@
 package PageObjects;
 
 import Utilities.BaseClass;
+import Utilities.PropertiesReader;
+import Utilities.RequestClass;
 import Utilities.Utility;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -19,6 +21,8 @@ public class HomePage extends BaseClass {
         super(driver, wait);
         PageFactory.initElements(driver, this);
     }
+
+    RequestClass request = new RequestClass();
 
     @FindBy(xpath = "//div[@class='text']")
     private WebElement theTeamheader;
@@ -153,13 +157,9 @@ public class HomePage extends BaseClass {
         try {
 
             Utility.scrollUntillElementVisible(btn_sendMessage);
-            //txt_firstName.click();
             txt_firstName.sendKeys(firstName);
-            // txt_lastName.click();
             txt_lastName.sendKeys(secondName);
-            // txt_email.click();
             txt_email.sendKeys(emailId);
-            // txt_message.click();
             txt_message.sendKeys(message);
             lst_category.click();
             if (lst_categoryvisible.isDisplayed()) {
@@ -177,16 +177,21 @@ public class HomePage extends BaseClass {
         }
     }
 
-    public void setContactUs(String Value) throws Exception {
+    public void setContactUsAPI(String firstName, String secondName, String category, String emailId, String message) throws Exception {
         try {
-            txt_firstName.click();
-            txt_firstName.sendKeys(Value);
+
+            String query = "{\"fname\":\"%s\",\"lname\":\"%s\",\"category\":\"%s\",\"email\":\"%s\",\"message\":\"%s\"}";
+            query = String.format(query, firstName, secondName, category, emailId, message);
+            String requestMessage = request.postMethod(PropertiesReader.getValue("ContactUs"), query);
+            System.out.println(requestMessage);
+
         } catch (Exception e) {
             throw new Exception("Unable to Submit Contact Us form");
         }
     }
 
-    public void sendbutton() {
+    public void sendbutton() throws Exception {
+        Utility.scrollUntillElementVisible(btn_sendMessage);
         btn_sendMessage.click();
     }
 
