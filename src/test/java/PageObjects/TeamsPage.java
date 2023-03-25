@@ -28,6 +28,8 @@ public class TeamsPage extends BaseClass {
 
     String lst_OurTeam = "//*[@class='titleName']";
 
+    String lst_alumni = "//*[@class='titleFont']";
+
     static List<WebElement> lst_name = new ArrayList<>();
 
     static List<String> name = new ArrayList<>();
@@ -38,6 +40,7 @@ public class TeamsPage extends BaseClass {
     public void getOurVolunteers(String team) throws Exception {
         try {
             String Team_Value = null;
+            String property = null;
             String message;
             name.clear();
             lst_name.clear();
@@ -45,11 +48,12 @@ public class TeamsPage extends BaseClass {
                 Team_Value = "ourVolunteers";
                 lst_name = driver.findElements((By.xpath(lst_OurVolunteers)));
             }
-            else if (team.contentEquals("Our Alumni"))
+            else if (team.contentEquals("Alumni"))
             {
                 Team_Value = "allAlumni";
-                lst_name = driver.findElements((By.xpath(lst_OurTeam)));
-            }else if(team.contentEquals("Our Team"))
+                lst_name = driver.findElements((By.xpath(lst_alumni)));
+                property = "founder";
+            }else if(team.contentEquals("Team"))
             {
                 Team_Value = "ourTeam";
                 lst_name = driver.findElements((By.xpath(lst_OurTeam)));
@@ -58,7 +62,7 @@ public class TeamsPage extends BaseClass {
                 name.add(name_lst.getText());
             }
             message = request.getMethod(PropertiesReader.getValue(Team_Value));
-            result_lst = util.stringToJsonToList(message);
+            result_lst = util.stringToJsonToList(message,property);
 
             Assert.assertTrue("There is mismatch in the volunteer displayed", name.containsAll(result_lst));
 

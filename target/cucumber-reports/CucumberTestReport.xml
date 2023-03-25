@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="1" time="6.729064">
-<testcase classname="HomePage" name="Validate that User is able to submit &quot;Contact Us&quot; form API" time="6.729064">
+<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="1" time="10.781884">
+<testcase classname="CDCPage" name="Validate that User is able to navigate  to &quot;Career Development Centre&quot; from &quot;Home Page&quot;" time="10.781884">
 <system-out><![CDATA[Given User is able to launch web browser and PDC website is loaded..........passed
-Then User Enters "TestAutomation","TestAutomation","CDC","testautomationpdc@gmail.com" and "This is a test automation scenario please ignore" in Contact Us form through API.passed
+When User clicks on "Career Development Centre" tab on Home page's navigation bar.passed
+When User is able to Book appointments for Mock Interviews..................passed
 ]]></system-out>
 </testcase>
 </testsuite>

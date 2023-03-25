@@ -105,13 +105,13 @@ public class HomePage extends BaseClass {
                     throw new Exception("Unable to navigate to Career Development Centre");
                 }
                 break;
-            case "For Students":
+           /* case "For Students":
                 try {
                     lnk_ForStudents.click();
                 } catch (Exception e) {
                     throw new Exception("Unable to navigate to For Students Page");
                 }
-                break;
+                break;*/
             case "Events":
                 try {
                     lnk_Events.click();
@@ -126,13 +126,13 @@ public class HomePage extends BaseClass {
                     throw new Exception("Unable to navigate to Projects Page");
                 }
                 break;
-            case "Feedback":
+           /* case "Feedback":
                 try {
                     lnk_Feedback.click();
                 } catch (Exception e) {
                     throw new Exception("Unable to navigate to Feedback Page");
                 }
-                break;
+                break;*/
             case "Join the Team":
                 try {
                     btn_JointheTeam.click();
@@ -200,8 +200,9 @@ public class HomePage extends BaseClass {
             theTeamheader.click();
             if(driver.findElement(By.xpath("//div[@class='menu transition visible']")).isDisplayed())
             {
-                team = team.replaceAll("\\s", "");
-                String lst_teamdropdown = "//div[@name='"+team+"']";
+                //team = team.replaceAll("\\s", "");
+                String lst_teamdropdown = "//div[contains(@name,'"+team+"')]";
+                Utility.pageWait();
                 driver.findElement(By.xpath(lst_teamdropdown)).click();
             }
         }

@@ -51,10 +51,10 @@ public class Util {
             if (username.contentEquals(obj.getString("username"))) {
                 value = obj.getString("password");
                 System.out.println(value);
-                obj.put("password",Encrption(value));
+                obj.put("password", Encrption(value));
                 FileWriter file = new FileWriter(CONFIGFILEPATH);
-                    file.write(jsonArray.toString());
-                    file.flush();
+                file.write(jsonArray.toString());
+                file.flush();
                 value = obj.getString("password");
                 System.out.println(value);
             }
@@ -64,21 +64,34 @@ public class Util {
 
     private String Encrption(String value) throws Exception {
         byte[] encodedValue = Base64.getEncoder().encode(value.getBytes());
-        String encoded = new String(encodedValue,"UTF8");
+        String encoded = new String(encodedValue, "UTF8");
         return encoded;
     }
 
     private String Decryption(String value) throws Exception {
         byte[] decodedValue = Base64.getDecoder().decode(value.getBytes());
-        String decoded = new String(decodedValue,"UTF8");
+        String decoded = new String(decodedValue, "UTF8");
         return decoded;
     }
 
-    public List stringToJsonToList(String message) throws IOException {
+    public List stringToJsonToList(String message, String property) throws IOException {
         JSONArray jsonArray = new JSONArray(message);
-        return IntStream.range(0, jsonArray.length())
-                .mapToObj(index -> ((JSONObject)jsonArray.get(index)).optString("name"))
-                .collect(Collectors.toList());
+        if(property == null) {
+            return IntStream.range(0, jsonArray.length())
+                    .mapToObj(index -> ((JSONObject) jsonArray.get(index)))
+                    .map(jsonObject -> jsonObject.optString("name"))
+                    .collect(Collectors.toList());
+        }
+        else {
+            return jsonListOnProperty(jsonArray,property);
+        }
     }
 
+    private List jsonListOnProperty(JSONArray jsonArray, String property) {
+        return IntStream.range(0, jsonArray.length())
+                .mapToObj(index -> ((JSONObject) jsonArray.get(index)))
+                .filter(jsonObject -> jsonObject.has(property))
+                .map(jsonObject -> jsonObject.optString("name"))
+                .collect(Collectors.toList());
+    }
 }

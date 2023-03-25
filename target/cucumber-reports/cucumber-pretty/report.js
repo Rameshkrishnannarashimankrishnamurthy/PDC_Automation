@@ -1,163 +1,144 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("HomePage.feature");
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("CDCPage.feature");
 formatter.feature({
   "line": 1,
-  "name": "HomePage",
+  "name": "CDCPage",
   "description": "",
-  "id": "homepage",
+  "id": "cdcpage",
   "keyword": "Feature"
 });
 formatter.scenarioOutline({
-  "line": 27,
-  "name": "Validate that User is able to submit \"Contact Us\" form API",
+  "line": 4,
+  "name": "Validate that User is able to navigate  to \"\u003cPagelink\u003e\" from \"Home Page\"",
   "description": "",
-  "id": "homepage;validate-that-user-is-able-to-submit-\"contact-us\"-form-api",
+  "id": "cdcpage;validate-that-user-is-able-to-navigate--to-\"\u003cpagelink\u003e\"-from-\"home-page\"",
   "type": "scenario_outline",
   "keyword": "Scenario Outline",
   "tags": [
     {
-      "line": 26,
-      "name": "@HomePage"
+      "line": 3,
+      "name": "@ValidCase"
     },
     {
-      "line": 26,
-      "name": "@SmokeTest"
+      "line": 3,
+      "name": "@SomeTags"
     },
     {
-      "line": 26,
-      "name": "@Regression"
-    },
-    {
-      "line": 26,
-      "name": "@Test3"
+      "line": 3,
+      "name": "@CDCPage"
     }
   ]
 });
 formatter.step({
-  "line": 28,
+  "line": 5,
   "name": "User is able to launch web browser and PDC website is loaded",
   "keyword": "Given "
 });
 formatter.step({
-  "line": 29,
-  "name": "User Enters \"\u003cFirstName\u003e\",\"\u003cLastName\u003e\",\"\u003cCategory\u003e\",\"\u003cEmail\u003e\" and \"\u003cMessage\u003e\" in Contact Us form through API",
-  "keyword": "Then "
+  "line": 6,
+  "name": "User clicks on \"\u003cPagelink\u003e\" tab on Home page\u0027s navigation bar",
+  "keyword": "When "
+});
+formatter.step({
+  "line": 7,
+  "name": "User is able to Book appointments for Mock Interviews",
+  "keyword": "When "
 });
 formatter.examples({
-  "line": 31,
+  "line": 9,
   "name": "",
   "description": "",
-  "id": "homepage;validate-that-user-is-able-to-submit-\"contact-us\"-form-api;",
+  "id": "cdcpage;validate-that-user-is-able-to-navigate--to-\"\u003cpagelink\u003e\"-from-\"home-page\";",
   "rows": [
     {
       "cells": [
-        "FirstName",
-        "LastName",
-        "Category",
-        "Email",
-        "Message"
+        "Pagelink"
       ],
-      "line": 32,
-      "id": "homepage;validate-that-user-is-able-to-submit-\"contact-us\"-form-api;;1"
+      "line": 10,
+      "id": "cdcpage;validate-that-user-is-able-to-navigate--to-\"\u003cpagelink\u003e\"-from-\"home-page\";;1"
     },
     {
       "cells": [
-        "TestAutomation",
-        "TestAutomation",
-        "CDC",
-        "testautomationpdc@gmail.com",
-        "This is a test automation scenario please ignore"
+        "Career Development Centre"
       ],
-      "line": 33,
-      "id": "homepage;validate-that-user-is-able-to-submit-\"contact-us\"-form-api;;2"
+      "line": 11,
+      "id": "cdcpage;validate-that-user-is-able-to-navigate--to-\"\u003cpagelink\u003e\"-from-\"home-page\";;2"
     }
   ],
   "keyword": "Examples"
 });
 formatter.before({
-  "duration": 5016369500,
+  "duration": 4478666700,
   "status": "passed"
 });
 formatter.scenario({
-  "line": 33,
-  "name": "Validate that User is able to submit \"Contact Us\" form API",
+  "line": 11,
+  "name": "Validate that User is able to navigate  to \"Career Development Centre\" from \"Home Page\"",
   "description": "",
-  "id": "homepage;validate-that-user-is-able-to-submit-\"contact-us\"-form-api;;2",
+  "id": "cdcpage;validate-that-user-is-able-to-navigate--to-\"\u003cpagelink\u003e\"-from-\"home-page\";;2",
   "type": "scenario",
   "keyword": "Scenario Outline",
   "tags": [
     {
-      "line": 26,
-      "name": "@Test3"
+      "line": 3,
+      "name": "@SomeTags"
     },
     {
-      "line": 26,
-      "name": "@HomePage"
+      "line": 3,
+      "name": "@ValidCase"
     },
     {
-      "line": 26,
-      "name": "@Regression"
-    },
-    {
-      "line": 26,
-      "name": "@SmokeTest"
+      "line": 3,
+      "name": "@CDCPage"
     }
   ]
 });
 formatter.step({
-  "line": 28,
+  "line": 5,
   "name": "User is able to launch web browser and PDC website is loaded",
   "keyword": "Given "
 });
 formatter.step({
-  "line": 29,
-  "name": "User Enters \"TestAutomation\",\"TestAutomation\",\"CDC\",\"testautomationpdc@gmail.com\" and \"This is a test automation scenario please ignore\" in Contact Us form through API",
+  "line": 6,
+  "name": "User clicks on \"Career Development Centre\" tab on Home page\u0027s navigation bar",
   "matchedColumns": [
-    0,
-    1,
-    2,
-    3,
-    4
+    0
   ],
-  "keyword": "Then "
+  "keyword": "When "
+});
+formatter.step({
+  "line": 7,
+  "name": "User is able to Book appointments for Mock Interviews",
+  "keyword": "When "
 });
 formatter.match({
   "location": "HomePageSteps.userIsAbleToLaunchWebBrowserAndPDCWebsiteIsLoaded()"
 });
 formatter.result({
-  "duration": 132093600,
+  "duration": 192583800,
   "status": "passed"
 });
 formatter.match({
   "arguments": [
     {
-      "val": "TestAutomation",
-      "offset": 13
-    },
-    {
-      "val": "TestAutomation",
-      "offset": 30
-    },
-    {
-      "val": "CDC",
-      "offset": 47
-    },
-    {
-      "val": "testautomationpdc@gmail.com",
-      "offset": 53
-    },
-    {
-      "val": "This is a test automation scenario please ignore",
-      "offset": 87
+      "val": "Career Development Centre",
+      "offset": 16
     }
   ],
-  "location": "HomePageSteps.userEntersAndInContactUsFormThroughAPI(String,String,String,String,String)"
+  "location": "HomePageSteps.userClicksOnTabOnHomePageSNavigationBar(String)"
 });
 formatter.result({
-  "duration": 961411400,
+  "duration": 5073650200,
+  "status": "passed"
+});
+formatter.match({
+  "location": "CDCPageSteps.userIsAbleToBookAppointmentsForMockInterviews()"
+});
+formatter.result({
+  "duration": 75600,
   "status": "passed"
 });
 formatter.after({
-  "duration": 619189200,
+  "duration": 1036907400,
   "status": "passed"
 });
 });

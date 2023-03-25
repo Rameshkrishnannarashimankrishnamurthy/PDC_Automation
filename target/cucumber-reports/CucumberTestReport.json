@@ -6,7 +6,7 @@
         "before": [
           {
             "result": {
-              "duration": 5016369500,
+              "duration": 4478666700,
               "status": "passed"
             },
             "match": {
@@ -14,14 +14,14 @@
             }
           }
         ],
-        "line": 33,
-        "name": "Validate that User is able to submit \"Contact Us\" form API",
+        "line": 11,
+        "name": "Validate that User is able to navigate  to \"Career Development Centre\" from \"Home Page\"",
         "description": "",
-        "id": "homepage;validate-that-user-is-able-to-submit-\"contact-us\"-form-api;;2",
+        "id": "cdcpage;validate-that-user-is-able-to-navigate--to-\"\u003cpagelink\u003e\"-from-\"home-page\";;2",
         "after": [
           {
             "result": {
-              "duration": 619189200,
+              "duration": 1036907400,
               "status": "passed"
             },
             "match": {
@@ -34,10 +34,10 @@
         "steps": [
           {
             "result": {
-              "duration": 132093600,
+              "duration": 192583800,
               "status": "passed"
             },
-            "line": 28,
+            "line": 5,
             "name": "User is able to launch web browser and PDC website is loaded",
             "match": {
               "location": "HomePageSteps.userIsAbleToLaunchWebBrowserAndPDCWebsiteIsLoaded()"
@@ -46,70 +46,58 @@
           },
           {
             "result": {
-              "duration": 961411400,
+              "duration": 5073650200,
               "status": "passed"
             },
-            "line": 29,
-            "name": "User Enters \"TestAutomation\",\"TestAutomation\",\"CDC\",\"testautomationpdc@gmail.com\" and \"This is a test automation scenario please ignore\" in Contact Us form through API",
+            "line": 6,
+            "name": "User clicks on \"Career Development Centre\" tab on Home page\u0027s navigation bar",
             "match": {
               "arguments": [
                 {
-                  "val": "TestAutomation",
-                  "offset": 13
-                },
-                {
-                  "val": "TestAutomation",
-                  "offset": 30
-                },
-                {
-                  "val": "CDC",
-                  "offset": 47
-                },
-                {
-                  "val": "testautomationpdc@gmail.com",
-                  "offset": 53
-                },
-                {
-                  "val": "This is a test automation scenario please ignore",
-                  "offset": 87
+                  "val": "Career Development Centre",
+                  "offset": 16
                 }
               ],
-              "location": "HomePageSteps.userEntersAndInContactUsFormThroughAPI(String,String,String,String,String)"
+              "location": "HomePageSteps.userClicksOnTabOnHomePageSNavigationBar(String)"
             },
             "matchedColumns": [
-              0,
-              1,
-              2,
-              3,
-              4
+              0
             ],
-            "keyword": "Then "
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 75600,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "User is able to Book appointments for Mock Interviews",
+            "match": {
+              "location": "CDCPageSteps.userIsAbleToBookAppointmentsForMockInterviews()"
+            },
+            "keyword": "When "
           }
         ],
         "tags": [
           {
-            "line": 26,
-            "name": "@Test3"
+            "line": 3,
+            "name": "@SomeTags"
           },
           {
-            "line": 26,
-            "name": "@HomePage"
+            "line": 3,
+            "name": "@ValidCase"
           },
           {
-            "line": 26,
-            "name": "@Regression"
-          },
-          {
-            "line": 26,
-            "name": "@SmokeTest"
+            "line": 3,
+            "name": "@CDCPage"
           }
         ]
       }
     ],
-    "name": "HomePage",
+    "name": "CDCPage",
     "description": "",
-    "id": "homepage",
+    "id": "cdcpage",
     "keyword": "Feature",
-    "uri": "HomePage.feature"
+    "uri": "CDCPage.feature"
   }
 ]
