@@ -1,9 +1,64 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="1" time="10.781884">
-<testcase classname="CDCPage" name="Validate that User is able to navigate  to &quot;Career Development Centre&quot; from &quot;Home Page&quot;" time="10.781884">
+<testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="11" time="95.049414">
+<testcase classname="CDCPage" name="Validate that User is able to navigate  to &quot;Career Development Centre&quot; from &quot;Home Page&quot;" time="9.773842">
 <system-out><![CDATA[Given User is able to launch web browser and PDC website is loaded..........passed
 When User clicks on "Career Development Centre" tab on Home page's navigation bar.passed
 When User is able to Book appointments for Mock Interviews..................passed
+]]></system-out>
+</testcase>
+<testcase classname="ContactUs" name="Validate that User is able to submit &quot;Contact Us&quot; form Home Page" time="9.30719">
+<system-out><![CDATA[Given User is able to launch web browser and PDC website is loaded..........passed
+When User clicks on "ContactUs" tab on Home page's navigation bar...........passed
+When User Enters "TestAutomation","TestAutomation","CDC","testautomationpdc@gmail.com" and "This is a test automation scenario please ignore" in Contact Us form.passed
+Then User Clicks on Send Message button.....................................passed
+]]></system-out>
+</testcase>
+<testcase classname="ContactUs" name="Validate that User is able to submit &quot;Contact Us&quot; form API" time="4.595916">
+<system-out><![CDATA[Given User is able to launch web browser and PDC website is loaded..........passed
+Then User Enters "TestAutomation","TestAutomation","CDC","testautomationpdc@gmail.com" and "This is a test automation scenario please ignore" in Contact Us form through API.passed
+]]></system-out>
+</testcase>
+<testcase classname="HomePage" name="Validate that User is able to navigate to &quot;Career Development Centre&quot; Page from Home Page headers" time="8.597113">
+<system-out><![CDATA[Given User is able to launch web browser and PDC website is loaded..........passed
+When User clicks on "Career Development Centre" tab on Home page's navigation bar.passed
+]]></system-out>
+</testcase>
+<testcase classname="HomePage" name="Validate that User is able to navigate to &quot;Events&quot; Page from Home Page headers" time="8.636282">
+<system-out><![CDATA[Given User is able to launch web browser and PDC website is loaded..........passed
+When User clicks on "Events" tab on Home page's navigation bar..............passed
+]]></system-out>
+</testcase>
+<testcase classname="HomePage" name="Validate that User is able to navigate to &quot;Projects&quot; Page from Home Page headers" time="8.614967">
+<system-out><![CDATA[Given User is able to launch web browser and PDC website is loaded..........passed
+When User clicks on "Projects" tab on Home page's navigation bar............passed
+]]></system-out>
+</testcase>
+<testcase classname="HomePage" name="Validate that User is able to navigate to &quot;ContactUs&quot; Page from Home Page headers" time="8.666022">
+<system-out><![CDATA[Given User is able to launch web browser and PDC website is loaded..........passed
+When User clicks on "ContactUs" tab on Home page's navigation bar...........passed
+]]></system-out>
+</testcase>
+<testcase classname="HomePage" name="Validate that User is able to navigate to &quot;Join the Team&quot; Page from Home Page headers" time="8.692163">
+<system-out><![CDATA[Given User is able to launch web browser and PDC website is loaded..........passed
+When User clicks on "Join the Team" tab on Home page's navigation bar.......passed
+]]></system-out>
+</testcase>
+<testcase classname="TeamsPage" name="Validate that User is able to navigate  to &quot;&lt;Pagelink&gt;&quot; from &quot;Home Page&quot;" time="9.598703">
+<system-out><![CDATA[Given User is able to launch web browser and PDC website is loaded..........passed
+When User clicks on all the members of our "Our Volunteers" of PDC..........passed
+And Validate the PDC team "Our Volunteers" list.............................passed
+]]></system-out>
+</testcase>
+<testcase classname="TeamsPage" name="Validate that User is able to navigate  to &quot;&lt;Pagelink&gt;&quot; from &quot;Home Page&quot; 2" time="9.273787">
+<system-out><![CDATA[Given User is able to launch web browser and PDC website is loaded..........passed
+When User clicks on all the members of our "Team" of PDC....................passed
+And Validate the PDC team "Team" list.......................................passed
+]]></system-out>
+</testcase>
+<testcase classname="TeamsPage" name="Validate that User is able to navigate  to &quot;&lt;Pagelink&gt;&quot; from &quot;Home Page&quot; 3" time="9.293429">
+<system-out><![CDATA[Given User is able to launch web browser and PDC website is loaded..........passed
+When User clicks on all the members of our "Alumni" of PDC..................passed
+And Validate the PDC team "Alumni" list.....................................passed
 ]]></system-out>
 </testcase>
 </testsuite>
