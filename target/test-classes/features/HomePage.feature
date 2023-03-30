@@ -1,36 +1,36 @@
 Feature: HomePage
 
-  @HomePage @SmokeTest @Regression @Test1
-  Scenario Outline: Validate that User is able to navigate to "<Pagelink>" Page from Home Page
+  @HomePage @SmokeTest @Regression @Home @SmokeTest
+  Scenario Outline: Validate that User is able to navigate to "<Pagelink>" Page from Home Page headers
     Given User is able to launch web browser and PDC website is loaded
     When User clicks on "<Pagelink>" tab on Home page's navigation bar
     Examples:
       | Pagelink                  |
       | Career Development Centre |
-      | For Students              |
       | Events                    |
       | Projects                  |
-      | Feedback                  |
+      | ContactUs                 |
       | Join the Team             |
 
-  @HomePage @SmokeTest @Regression @Test2
-  Scenario Outline: Validate that User is able to submit "Contact Us" form Home Page
+
+  @HomePage @Regression @Home
+  Scenario Outline: Validate that User is able to navigate to "<Button>" Page from Home Page
     Given User is able to launch web browser and PDC website is loaded
-    When User Enters "<FirstName>","<LastName>","<Category>","<Email>" and "<Message>" in Contact Us form
-    Then User Clicks on Send Message button
+    When User clicks on "<Button>" on Home page
+    And User is navigated to "<Button>" page
     Examples:
-      | FirstName      | LastName       | Category | Email                       | Message                                          |
-      | TestAutomation | TestAutomation | CDC      | testautomationpdc@gmail.com | This is a test automation scenario please ignore |
+      | Button         |
+      | Find a Project |
+      | All Events     |
 
-
-  @HomePage @SmokeTest @Regression @Test3
-  Scenario Outline: Validate that User is able to submit "Contact Us" form API
+  @HomePage @Regression @Home
+  Scenario: Validate that User is able to subscribe to PDC Monthly Newsletter
     Given User is able to launch web browser and PDC website is loaded
-    Then User Enters "<FirstName>","<LastName>","<Category>","<Email>" and "<Message>" in Contact Us form through API
+    When User clicks on "<Button>" on Home page
+    When User is navigated to "<Button>" page
+    When User Enters "<Email>","<FirstName>","<MiddleName>","<LastName>" and "<ProgramOfStudy>" in Subscribe form
+    And User Clicks on submit button
 
-    Examples:
-      | FirstName      | LastName       | Category | Email                       | Message                                          |
-      | TestAutomation | TestAutomation | CDC      | testautomationpdc@gmail.com | This is a test automation scenario please ignore |
 
 
 

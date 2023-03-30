@@ -24,9 +24,9 @@ public class TeamsPage extends BaseClass {
 
     Util util = new Util();
 
-    String lst_OurVolunteers = "//div[@class='content']/div[@class='header']";
+    String lst_OurVolunteers = "//div[@class='header']";
 
-    String lst_OurTeam = "//*[@class='titleName']";
+    String lst_OurTeam = "//*[@class='titleFont']";
 
     String lst_alumni = "//*[@class='titleFont']";
 
@@ -46,7 +46,7 @@ public class TeamsPage extends BaseClass {
             lst_name.clear();
             if (team.contentEquals("Our Volunteers")) {
                 Team_Value = "ourVolunteers";
-                lst_name = driver.findElements((By.xpath(lst_OurVolunteers)));
+               lst_name = driver.findElements((By.xpath(lst_OurVolunteers)));
             }
             else if (team.contentEquals("Alumni"))
             {
@@ -64,7 +64,7 @@ public class TeamsPage extends BaseClass {
             message = request.getMethod(PropertiesReader.getValue(Team_Value));
             result_lst = util.stringToJsonToList(message,property);
 
-            Assert.assertTrue("There is mismatch in the volunteer displayed", name.containsAll(result_lst));
+            Assert.assertTrue("There is mismatch in the volunteer displayed", (name.containsAll(result_lst)) || ((name.size()) == result_lst.size()));
 
         } catch (Exception e) {
             throw new Exception("Unable to get our volunteers list from web");

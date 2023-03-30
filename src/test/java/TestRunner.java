@@ -4,7 +4,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resources/features", tags = {"@CDCPage"},
+        features = "src/test/resources/features", tags = {"@SmokeTest"},
         glue = "StepDefinitions",
         monochrome = true, plugin = {
         "pretty",

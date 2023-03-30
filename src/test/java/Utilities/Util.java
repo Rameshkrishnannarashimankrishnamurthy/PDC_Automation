@@ -10,6 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -76,22 +77,24 @@ public class Util {
 
     public List stringToJsonToList(String message, String property) throws IOException {
         JSONArray jsonArray = new JSONArray(message);
-        if(property == null) {
+        if (property == null) {
             return IntStream.range(0, jsonArray.length())
                     .mapToObj(index -> ((JSONObject) jsonArray.get(index)))
                     .map(jsonObject -> jsonObject.optString("name"))
                     .collect(Collectors.toList());
-        }
-        else {
-            return jsonListOnProperty(jsonArray,property);
+        } else {
+            return jsonListOnProperty(jsonArray, property);
         }
     }
 
     private List jsonListOnProperty(JSONArray jsonArray, String property) {
-        return IntStream.range(0, jsonArray.length())
-                .mapToObj(index -> ((JSONObject) jsonArray.get(index)))
-                .filter(jsonObject -> jsonObject.has(property))
-                .map(jsonObject -> jsonObject.optString("name"))
-                .collect(Collectors.toList());
+        List<String> name = new ArrayList<>();
+        for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+            if (jsonObject.has(property)) {
+                name.add(jsonObject.optString("name"));
+            }
+        }
+        return name;
     }
 }
