@@ -1,0 +1,3607 @@
+{
+	"info": {
+		"_postman_id": "a1508401-efe4-4b65-ba0a-3ddb9c33e52f",
+		"name": "PDC New API's",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24907592"
+	},
+	"item": [
+		{
+			"name": "Volunteers",
+			"item": [
+				{
+					"name": "Get All Volunteers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"/*pm.test(\"Response is not empty\", function () {\r",
+									"    pm.expect(pm.response.json()).to.not.be.empty;\r",
+									"}); */\r",
+									"\r",
+									"/*pm.test(\"id field is not null\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(jsonbody._id).to.not.null;\r",
+									"});*/\r",
+									"\r",
+									"pm.test(\"Validate the response contains id value and response is not empty\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody.length);\r",
+									"    for(var i=0;i<jsonbody.length;i++)\r",
+									"    {\r",
+									"        console.log(jsonbody[i]._id);\r",
+									"    }\r",
+									"    if (jsonbody.length > 0) {\r",
+									"        pm.expect(jsonbody).to.not.be.empty;\r",
+									"    } else {\r",
+									"        pm.expect(\"Response is empty\").to.equal(\"Response is not empty\");\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_Endpoint}}volunteers/all",
+							"host": [
+								"{{URL_Endpoint}}volunteers"
+							],
+							"path": [
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Volunteers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response is not empty\", function () {\r",
+									"    pm.expect(pm.response.json()).to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"// pm.test(\"id field is not null\", function () {\r",
+									"//     let jsonbody = JSON.parse(responseBody)\r",
+									"//    // console.log(jsonbody);\r",
+									"//     pm.expect(jsonbody._id).to.not.null;\r",
+									"// });\r",
+									"\r",
+									"pm.test(\"Validate request body with response body\",function(){\r",
+									"    let data = pm.response.json(),\r",
+									"      requestBody = JSON.parse(pm.request.body.raw);\r",
+									"\r",
+									"    pm.expect(data.name).to.eql(requestBody.name);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"_id\": \"61e4ba119b48082c555b2bda\",\r\n        \"category\": \"Executives\",\r\n        \"name\": \"Amneet Singh\",\r\n        \"email\": \"asing288@uottawa.ca\",\r\n        \"position\": \"Website Manager\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}volunteers/update",
+							"host": [
+								"{{URL_Endpoint}}volunteers"
+							],
+							"path": [
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add New Volunteer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"Response is not empty\", function () {\r",
+									"    pm.expect(pm.response.json()).to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"id field is not null\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(jsonbody._id).to.not.null;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"category\": \"Executives\",\r\n    \"name\": \"Siddhi Deshmukh\",\r\n    \"email\": \"sdesh031@uottawa.ca\",\r\n    \"position\": \"Website Manager\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}volunteers/add",
+							"host": [
+								"{{URL_Endpoint}}volunteers"
+							],
+							"path": [
+								"add"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Coordinators",
+			"item": [
+				{
+					"name": "Get All Program Coordinators",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"Validate the response contains id value and response is not empty\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody.length);\r",
+									"    for(var i=0;i<jsonbody.length;i++)\r",
+									"    {\r",
+									"        console.log(jsonbody[i]._id);\r",
+									"    }\r",
+									"    if (jsonbody.length > 0) {\r",
+									"        pm.expect(jsonbody).to.not.be.empty;\r",
+									"    } else {\r",
+									"        pm.expect(\"Response is empty\").to.equal(\"Response is not empty\");\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_Endpoint}}coordinators/all",
+							"host": [
+								"{{URL_Endpoint}}coordinators"
+							],
+							"path": [
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add New Program Coordinator",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"id field is not null\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(jsonbody._id).to.not.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate request body with response body\",function(){\r",
+									"    let data = pm.response.json(),\r",
+									"      requestBody = JSON.parse(pm.request.body.raw);\r",
+									"      pm.environment.set('Coordinator_id',JSON.stringify(pm.response.json()._id));\r",
+									"    pm.expect(data.name).to.contains(requestBody.name);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Test Name\",\r\n    \"program\": \"Test Program\",\r\n    \"email\": \"Test_Email@uottawa.ca\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}coordinators/add",
+							"host": [
+								"{{URL_Endpoint}}coordinators"
+							],
+							"path": [
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Program Coordinator",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"Response is not empty\", function () {\r",
+									"    pm.expect(pm.response.json()).to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Validate request body with response body\",function(){\r",
+									"    let data = pm.response.json(),\r",
+									"      requestBody = JSON.parse(pm.request.body.raw);\r",
+									"\r",
+									"    pm.expect(data.name).to.eql(requestBody.name);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"61e5dbf29529ec145897462f\",\r\n    \"name\": \"Name Testt\",\r\n    \"program\": \"Program Test\",\r\n    \"email\": \"Email Test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}coordinators/update",
+							"host": [
+								"{{URL_Endpoint}}coordinators"
+							],
+							"path": [
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Program Coordinator",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"when _id is valid\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(pm.response.json()).eq(\"Success!\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": {{Coordinator_id}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}coordinators/remove",
+							"host": [
+								"{{URL_Endpoint}}coordinators"
+							],
+							"path": [
+								"remove"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Program Coordinator:Invalid id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"when _id is valid\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(pm.response.json()).eq(\"Error while deleting.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": {{inValid_id}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}coordinators/remove",
+							"host": [
+								"{{URL_Endpoint}}coordinators"
+							],
+							"path": [
+								"remove"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CDC",
+			"item": [
+				{
+					"name": "Links",
+					"item": [
+						{
+							"name": "Get All Links",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"id field is not null\", function () {\r",
+											"    let jsonbody = JSON.parse(responseBody)\r",
+											"    console.log(jsonbody);\r",
+											"    pm.expect(jsonbody._id).to.not.null;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Validate the response contains id value and response is not empty\", function () {\r",
+											"    let jsonbody = JSON.parse(responseBody)\r",
+											"    console.log(jsonbody.length);\r",
+											"    for(var i=0;i<jsonbody.length;i++)\r",
+											"    {\r",
+											"        console.log(jsonbody[i].active);\r",
+											"        console.log(jsonbody[i].link);\r",
+											"    }\r",
+											"    if (jsonbody.length > 0) {\r",
+											"        pm.expect(jsonbody).to.not.be.empty;\r",
+											"    } else {\r",
+											"        pm.expect(\"Response is empty\").to.equal(\"Response is not empty\");\r",
+											"    }\r",
+											"});\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"category\": \"Executives\",\r\n    \"name\": \"Siddhi Deshmukh\",\r\n    \"email\": \"sdesh031@uottawa.ca\",\r\n    \"position\": \"Website Manager\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_Endpoint}}cdc/links/all",
+									"host": [
+										"{{URL_Endpoint}}cdc"
+									],
+									"path": [
+										"links",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Link",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//************VERIFY RESPONSE***************//\r",
+											"\r",
+											"pm.test(\"Response is not empty\", function () {\r",
+											"    pm.expect(pm.response.json()).to.not.be.empty;\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Validate request body with response body\",function(){\r",
+											"    let data = pm.response.json(),\r",
+											"      requestBody = JSON.parse(pm.request.body.raw);\r",
+											"\r",
+											"    pm.expect(data.name).to.eql(requestBody.name);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"_id\": \"61de47dd7f57c642a6837398\",\r\n    \"name\": \"Test Name\",\r\n    \"link\": \"Test Link\",\r\n    \"active\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_Endpoint}}cdc/links/update",
+									"host": [
+										"{{URL_Endpoint}}cdc"
+									],
+									"path": [
+										"links",
+										"update"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Resume Tips",
+					"item": [
+						{
+							"name": "Get All Resume Tips",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//************VERIFY RESPONSE***************//\r",
+											"\r",
+											"pm.test(\"Validate the response contains id value and response is not empty\", function () {\r",
+											"    let jsonbody = JSON.parse(responseBody)\r",
+											"    console.log(jsonbody.length);\r",
+											"    for(var i=0;i<jsonbody.length;i++)\r",
+											"    {\r",
+											"        console.log(jsonbody[i]._id);\r",
+											"    }\r",
+											"    if (jsonbody.length > 0) {\r",
+											"        pm.expect(jsonbody).to.not.be.empty;\r",
+											"    } else {\r",
+											"        pm.expect(\"Response is empty\").to.equal(\"Response is not empty\");\r",
+											"    }\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL_Endpoint}}cdc/resumetips/all",
+									"host": [
+										"{{URL_Endpoint}}cdc"
+									],
+									"path": [
+										"resumetips",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Resume Tips",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//************VERIFY RESPONSE***************//\r",
+											"\r",
+											"pm.test(\"Response is not empty\", function () {\r",
+											"    pm.expect(pm.response.json()).to.not.be.empty;\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Validate request body with response body\",function(){\r",
+											"    let data = pm.response.json(),\r",
+											"      requestBody = JSON.parse(pm.request.body.raw);\r",
+											"\r",
+											"    pm.expect(data.name).to.eql(requestBody.name);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"_id\": \"61de52b47f57c642a683739a\",\r\n    \"category\": \"do\",\r\n    \"tip\": \"testdont\",\r\n    \"active\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_Endpoint}}cdc/resumetips/update",
+									"host": [
+										"{{URL_Endpoint}}cdc"
+									],
+									"path": [
+										"resumetips",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Resume Tip",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//************VERIFY RESPONSE***************//\r",
+											"\r",
+											"\r",
+											"pm.test(\"id field is not null\", function () {\r",
+											"    let jsonbody = JSON.parse(responseBody)\r",
+											"    console.log(jsonbody);\r",
+											"    pm.expect(jsonbody._id).to.not.null;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Validate request body with response body\",function(){\r",
+											"    let data = pm.response.json()\r",
+											"      requestBody = JSON.parse(pm.request.body.raw);\r",
+											"\r",
+											"    pm.expect(data).to.contains(requestBody);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"category\": \"do\",\r\n    \"tip\": \"doo 1\",\r\n    \"active\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_Endpoint}}cdc/resumetips/add",
+									"host": [
+										"{{URL_Endpoint}}cdc"
+									],
+									"path": [
+										"resumetips",
+										"add"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "LinkedIn Tips",
+					"item": [
+						{
+							"name": "Get All LinkedIn Tips",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//************VERIFY RESPONSE***************//\r",
+											"\r",
+											"pm.test(\"Validate the response contains id value and response is not empty\", function () {\r",
+											"    let jsonbody = JSON.parse(responseBody)\r",
+											"    console.log(jsonbody.length);\r",
+											"    for(var i=0;i<jsonbody.length;i++)\r",
+											"    {\r",
+											"        console.log(jsonbody[i]._id);\r",
+											"    }\r",
+											"    if (jsonbody.length > 0) {\r",
+											"        pm.expect(jsonbody).to.not.be.empty;\r",
+											"    } else {\r",
+											"        pm.expect(\"Response is empty\").to.equal(\"Response is not empty\");\r",
+											"    }\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL_Endpoint}}cdc/linkedintips/all",
+									"host": [
+										"{{URL_Endpoint}}cdc"
+									],
+									"path": [
+										"linkedintips",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update LinkedIn Tips",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//************VERIFY RESPONSE***************//\r",
+											"\r",
+											"pm.test(\"Response is not empty\", function () {\r",
+											"    pm.expect(pm.response.json()).to.not.be.empty;\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Validate request body with response body\",function(){\r",
+											"    let data = pm.response.json();\r",
+											"      requestBody = JSON.parse(pm.request.body.raw);\r",
+											"\r",
+											"    pm.expect(data).to.contain(requestBody);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"_id\": \"61df6ca206643bbf48b8946d\",\r\n    \"heading\": \"test\",\r\n    \"description\": \"test\",\r\n    \"active\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_Endpoint}}cdc/linkedintips/update",
+									"host": [
+										"{{URL_Endpoint}}cdc"
+									],
+									"path": [
+										"linkedintips",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add LinkedIn Tip",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//************VERIFY RESPONSE***************//\r",
+											"\r",
+											"pm.test(\"id field is not null\", function () {\r",
+											"    let jsonbody = JSON.parse(responseBody)\r",
+											"    console.log(jsonbody);\r",
+											"    pm.expect(jsonbody._id).to.not.null;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Validate request body with response body\",function(){\r",
+											"    let data = pm.response.json(),\r",
+											"      requestBody = JSON.parse(pm.request.body.raw);\r",
+											"\r",
+											"    pm.expect(data).to.contains(requestBody);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"heading\": \"linkedin mistake\",\r\n    \"description\": \"mistake 1\",\r\n    \"active\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_Endpoint}}cdc/linkedintips/add",
+									"host": [
+										"{{URL_Endpoint}}cdc"
+									],
+									"path": [
+										"linkedintips",
+										"add"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Interview Questions",
+					"item": [
+						{
+							"name": "Get All Interview Questions",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//************VERIFY RESPONSE***************//\r",
+											"\r",
+											"pm.test(\"Validate the response contains id value and response is not empty\", function () {\r",
+											"    let jsonbody = JSON.parse(responseBody)\r",
+											"    console.log(jsonbody.length);\r",
+											"    for(var i=0;i<jsonbody.length;i++)\r",
+											"    {\r",
+											"        console.log(jsonbody[i]._id);\r",
+											"    }\r",
+											"    if (jsonbody.length > 0) {\r",
+											"        pm.expect(jsonbody).to.not.be.empty;\r",
+											"    } else {\r",
+											"        pm.expect(\"Response is empty\").to.equal(\"Response is not empty\");\r",
+											"    }\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL_Endpoint}}cdc/interviewques/all",
+									"host": [
+										"{{URL_Endpoint}}cdc"
+									],
+									"path": [
+										"interviewques",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Interview Questions",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//************VERIFY RESPONSE***************//\r",
+											"\r",
+											"pm.test(\"id field is not null\", function () {\r",
+											"    let jsonbody = JSON.parse(responseBody)\r",
+											"    console.log(jsonbody);\r",
+											"    pm.expect(jsonbody._id).to.not.null;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Validate request body with response body\",function(){\r",
+											"    let data = pm.response.json(),\r",
+											"      requestBody = JSON.parse(pm.request.body.raw);\r",
+											"\r",
+											"    pm.expect(data).to.contains(requestBody);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"category\": \"common\",\r\n    \"ques\": \"mistake 1\",\r\n    \"active\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_Endpoint}}cdc/interviewques/add",
+									"host": [
+										"{{URL_Endpoint}}cdc"
+									],
+									"path": [
+										"interviewques",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Interview Questions",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//************VERIFY RESPONSE***************//\r",
+											"\r",
+											"pm.test(\"Response is not empty\", function () {\r",
+											"    pm.expect(pm.response.json()).to.not.be.empty;\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Validate request body with response body\",function(){\r",
+											"    let data = pm.response.json();\r",
+											"      requestBody = JSON.parse(pm.request.body.raw);\r",
+											"\r",
+											"    pm.expect(data).to.contain(requestBody);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"_id\": \"61e5ed1f86e8f1366090eef4\",\r\n    \"category\": \"connect\",\r\n    \"ques\": \"mistake 1\",\r\n    \"active\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_Endpoint}}cdc/interviewques/update",
+									"host": [
+										"{{URL_Endpoint}}cdc"
+									],
+									"path": [
+										"interviewques",
+										"update"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Contact Information",
+					"item": [
+						{
+							"name": "Get Contact Information",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//************VERIFY RESPONSE***************//\r",
+											"\r",
+											"pm.test(\"Validate the response contains id value and response is not empty\", function () {\r",
+											"    let jsonbody = JSON.parse(responseBody)\r",
+											"    console.log(jsonbody.length);\r",
+											"    for(var i=0;i<jsonbody.length;i++)\r",
+											"    {\r",
+											"        console.log(jsonbody[i]._id);\r",
+											"    }\r",
+											"    if (jsonbody.length > 0) {\r",
+											"        pm.expect(jsonbody).to.not.be.empty;\r",
+											"    } else {\r",
+											"        pm.expect(\"Response is empty\").to.equal(\"Response is not empty\");\r",
+											"    }\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL_Endpoint}}cdc/contact/all",
+									"host": [
+										"{{URL_Endpoint}}cdc"
+									],
+									"path": [
+										"contact",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Contact Information",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//************VERIFY RESPONSE***************//\r",
+											"\r",
+											"pm.test(\"Response is not empty\", function () {\r",
+											"    pm.expect(pm.response.json()).to.not.be.empty;\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Validate request body with response body\",function(){\r",
+											"    let data = pm.response.json();\r",
+											"      requestBody = JSON.parse(pm.request.body.raw);\r",
+											"\r",
+											"    pm.expect(data).to.contain(requestBody);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"_id\": \"61df6eaa231915c714e477b1\",\r\n    \"name\": \"Subash Kashyap\",\r\n    \"email\": \"skash001@uottawa.ca\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_Endpoint}}cdc/contact/update",
+									"host": [
+										"{{URL_Endpoint}}cdc"
+									],
+									"path": [
+										"contact",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Contact Information",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//************VERIFY RESPONSE***************//\r",
+											"\r",
+											"pm.test(\"id field is not null\", function () {\r",
+											"    let jsonbody = JSON.parse(responseBody)\r",
+											"    console.log(jsonbody);\r",
+											"    pm.expect(jsonbody._id).to.not.null;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Validate request body with response body\",function(){\r",
+											"    let data = pm.response.json(),\r",
+											"      requestBody = JSON.parse(pm.request.body.raw);\r",
+											"\r",
+											"    pm.expect(data).to.contains(requestBody);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Test Name\",\r\n    \"email\": \"Testemail@uottawa.ca\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_Endpoint}}cdc/contact/add",
+									"host": [
+										"{{URL_Endpoint}}cdc"
+									],
+									"path": [
+										"contact",
+										"add"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Alumni",
+			"item": [
+				{
+					"name": "Get All Alumni",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"Validate the response contains id value and response is not empty\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody.length);\r",
+									"    for(var i=0;i<jsonbody.length;i++)\r",
+									"    {\r",
+									"        console.log(jsonbody[i]._id);\r",
+									"    }\r",
+									"    if (jsonbody.length > 0) {\r",
+									"        pm.expect(jsonbody).to.not.be.empty;\r",
+									"    } else {\r",
+									"        pm.expect(\"Response is empty\").to.equal(\"Response is not empty\");\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_Endpoint}}alumni/all",
+							"host": [
+								"{{URL_Endpoint}}alumni"
+							],
+							"path": [
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add New Alumni",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"id field is not null\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(jsonbody._id).to.not.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate request body with response body\",function(){\r",
+									"    let data = pm.response.json(),\r",
+									"      requestBody = JSON.parse(pm.request.body.raw);\r",
+									"    pm.environment.set('Alumini_id',JSON.stringify(pm.response.json()._id));\r",
+									"    pm.expect(data).to.contains(requestBody);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"image\": \"Test Image Link\",\r\n    \"name\": \"Test Name NAME\",\r\n    \"currentPosition\": \"Test Current Position\",\r\n    \"linkedIn\": \"Test LinkedIn Link\",\r\n    \"email\": \"Test Email URL\",\r\n    \"founder\": false,\r\n    \"lang\": \"EN\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}alumni/add",
+							"host": [
+								"{{URL_Endpoint}}alumni"
+							],
+							"path": [
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Alumni",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"Response is not empty\", function () {\r",
+									"    pm.expect(pm.response.json()).to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Validate request body with response body\",function(){\r",
+									"    let data = pm.response.json();\r",
+									"      requestBody = JSON.parse(pm.request.body.raw);\r",
+									"\r",
+									"    pm.expect(data).to.contain(requestBody);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"61e61bf401591314c4bb2e78\",\r\n    \"image\": \"Image Link\",\r\n    \"name\": \"First Name\",\r\n    \"currentPosition\": \"Current Position\",\r\n    \"linkedIn\": \"LinkedIn Link\",\r\n    \"email\": \"Email URL\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}alumni/update",
+							"host": [
+								"{{URL_Endpoint}}alumni"
+							],
+							"path": [
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Alumni",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"when _id is valid\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(pm.response.json()).eq(\"Success!\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": {{Alumini_id}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}alumni/remove",
+							"host": [
+								"{{URL_Endpoint}}alumni"
+							],
+							"path": [
+								"remove"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Alumni:Invalid id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"when _id is not valid\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(pm.response.json()).eq(\"Error while deleting.\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": {{inValid_id}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}alumni/remove",
+							"host": [
+								"{{URL_Endpoint}}alumni"
+							],
+							"path": [
+								"remove"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Our Team",
+			"item": [
+				{
+					"name": "Get All Team (Our Team)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"Validate the response contains id value and response is not empty\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody.length);\r",
+									"    for(var i=0;i<jsonbody.length;i++)\r",
+									"    {\r",
+									"        console.log(jsonbody[i]._id);\r",
+									"    }\r",
+									"    if (jsonbody.length > 0) {\r",
+									"        pm.expect(jsonbody).to.not.be.empty;\r",
+									"    } else {\r",
+									"        pm.expect(\"Response is empty\").to.equal(\"Response is not empty\");\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_Endpoint}}ourTeam/all",
+							"host": [
+								"{{URL_Endpoint}}ourTeam"
+							],
+							"path": [
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Our Team",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"id field is not null\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(jsonbody._id).to.not.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate request body with response body\",function(){\r",
+									"    let data = pm.response.json(),\r",
+									"      requestBody = JSON.parse(pm.request.body.raw);\r",
+									"      pm.environment.set('ourTeamMember_id',JSON.stringify(pm.response.json()._id));\r",
+									"    pm.expect(data).to.contains(requestBody);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"image\": \"kk\",\r\n    \"name\": \"kk\",\r\n    \"position\": \"kk\",\r\n    \"linkedIn\": \"kk\",\r\n    \"email\": \"kk\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}ourTeam/add",
+							"host": [
+								"{{URL_Endpoint}}ourTeam"
+							],
+							"path": [
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Our Team",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"Response is not empty\", function () {\r",
+									"    pm.expect(pm.response.json()).to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Validate request body with response body\",function(){\r",
+									"    let data = pm.response.json();\r",
+									"      requestBody = JSON.parse(pm.request.body.raw);\r",
+									"\r",
+									"    pm.expect(data).to.contain(requestBody);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"61e61ef4729f146b08bc23c2\",\r\n    \"image\": \"Image Link\",\r\n    \"name\": \"First Name\",\r\n    \"position\": \"Current Position\",\r\n    \"linkedIn\": \"LinkedIn Link\",\r\n    \"email\": \"Email URL\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}ourTeam/update",
+							"host": [
+								"{{URL_Endpoint}}ourTeam"
+							],
+							"path": [
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Our Team",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"\r",
+									"pm.test(\"when _id is valid\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(pm.response.json()).eq(\"Success!\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": {{ourTeamMember_id}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}ourTeam/remove",
+							"host": [
+								"{{URL_Endpoint}}ourTeam"
+							],
+							"path": [
+								"remove"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Our Team:Invalid id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"pm.test(\"when _id is not valid\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(pm.response.json()).eq(\"Error while deleting.\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": {{inValid_id}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}ourTeam/remove",
+							"host": [
+								"{{URL_Endpoint}}ourTeam"
+							],
+							"path": [
+								"remove"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "HomePage",
+			"item": [
+				{
+					"name": "Carousel",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"Validate the response contains id value and response is not empty\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody.length);\r",
+									"    for(var i=0;i<jsonbody.length;i++)\r",
+									"    {\r",
+									"        console.log(jsonbody[i]._id);\r",
+									"    }\r",
+									"    if (jsonbody.length > 0) {\r",
+									"        pm.expect(jsonbody).to.not.be.empty;\r",
+									"    } else {\r",
+									"        pm.expect(\"Response is empty\").to.equal(\"Response is not empty\");\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_Endpoint}}home/carousel",
+							"host": [
+								"{{URL_Endpoint}}home"
+							],
+							"path": [
+								"carousel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "About Us",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"    let jsonbody = JSON.parse(responseBody);\r",
+									"    \r",
+									"pm.test(\"Validate the response contains id value and response is not empty\", function () {\r",
+									"\r",
+									"    console.log(jsonbody.length);\r",
+									"    for(var i=0;i<jsonbody.length;i++)\r",
+									"    {\r",
+									"        console.log(jsonbody[i]._id);\r",
+									"    }\r",
+									"    if (jsonbody.length > 0) {\r",
+									"        pm.expect(jsonbody).to.not.be.empty;\r",
+									"    } else {\r",
+									"        pm.expect(\"Response is empty\").to.equal(\"Response is not empty\");\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate the Description of About Us\", function()\r",
+									"{\r",
+									"   //let jsonbody = JSON.parse(responseBody);\r",
+									"    console.log(jsonbody[0]._id)\r",
+									"    console.log(jsonbody[0].description)\r",
+									"    pm.expect(jsonbody[0].description).to.equal(pm.environment.get(\"AboutUs_Description\"));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}home/about",
+							"host": [
+								"{{URL_Endpoint}}home"
+							],
+							"path": [
+								"about"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Testimonials",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"Validate the response contains id value and response is not empty\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody.length);\r",
+									"    for(var i=0;i<jsonbody.length;i++)\r",
+									"    {\r",
+									"        console.log(jsonbody[i]._id);\r",
+									"    }\r",
+									"    if (jsonbody.length > 0) {\r",
+									"        pm.expect(jsonbody).to.not.be.empty;\r",
+									"    } else {\r",
+									"        pm.expect(\"Response is empty\").to.equal(\"Response is not empty\");\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_Endpoint}}home/testimonials",
+							"host": [
+								"{{URL_Endpoint}}home"
+							],
+							"path": [
+								"testimonials"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Contact Us",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"id field is not null\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(jsonbody._id).to.not.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate request body with response body\",function(){\r",
+									"    let data = pm.response.json(),\r",
+									"      requestBody = JSON.parse(pm.request.body.raw);\r",
+									"\r",
+									"    pm.expect(data).to.contains(requestBody);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fname\": \"Test fname\",\r\n    \"lname\": \"Test lname\",\r\n    \"category\": \"Test category\",\r\n    \"email\": \"Test email\",\r\n    \"message\": \"Test messgae\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}home/contact",
+							"host": [
+								"{{URL_Endpoint}}home"
+							],
+							"path": [
+								"contact"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update About Us",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"id field is not null\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(jsonbody._id).to.not.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate request body with response body\",function(){\r",
+									"    let data = pm.response.json(),\r",
+									"      requestBody = JSON.parse(pm.request.body.raw);\r",
+									"        console.log(pm.environment.get(\"AboutUs_Description\"))\r",
+									"    pm.expect(data).to.contains(requestBody);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"62185ba38eed09767df6cc77\",\r\n        \"image\": \"https://i.postimg.cc/tTdHtdnz/PXL-20220323-193553611.jpg\",\r\n        \"description\": \"{{AboutUs_Description}}\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}home/about/update",
+							"host": [
+								"{{URL_Endpoint}}home"
+							],
+							"path": [
+								"about",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Carousel Content",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"id field is not null\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(jsonbody._id).to.not.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate request body with response body\",function(){\r",
+									"    let data = pm.response.json(),\r",
+									"      requestBody = JSON.parse(pm.request.body.raw);\r",
+									"        pm.environment.set('carousel_id',JSON.stringify(pm.response.json()._id));\r",
+									"    pm.expect(data).to.contains(requestBody);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"image\": \"https://i.postimg.cc/9QkZPZyK/cropped-1-2.jpg\",\r\n        \"heading\": \"5\",\r\n        \"description\": \"Test Descriptionnn\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}home/carousel/add",
+							"host": [
+								"{{URL_Endpoint}}home"
+							],
+							"path": [
+								"carousel",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Carousel Content",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"id field is not null\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(jsonbody._id).to.not.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate request body with response body\",function(){\r",
+									"    let data = pm.response.json(),\r",
+									"      requestBody = JSON.parse(pm.request.body.raw);\r",
+									"    pm.expect(data).to.contains(requestBody);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"637ad681cf0b686a38935ff7\",\r\n    \"image\": \"https://i.postimg.cc/9QkZPZyK/cropped-1-2.jpg\",\r\n    \"description\": \"Test Description\",\r\n    \"heading\": \"5\",\r\n    \"__v\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}home/carousel/update",
+							"host": [
+								"{{URL_Endpoint}}home"
+							],
+							"path": [
+								"carousel",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Carousel Content",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"when _id is valid\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(pm.response.json()).eq(\"Success!\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": {{carousel_id}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}home/carousel/delete",
+							"host": [
+								"{{URL_Endpoint}}home"
+							],
+							"path": [
+								"carousel",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Carousel Content:Invalid Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"when _id is not valid\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(pm.response.json()).eq(\"Error while deleting.\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": {{inValid_id}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}home/carousel/delete",
+							"host": [
+								"{{URL_Endpoint}}home"
+							],
+							"path": [
+								"carousel",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Testimonial",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"id field is not null\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(jsonbody._id).to.not.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate request body with response body\",function(){\r",
+									"    let data = pm.response.json(),\r",
+									"      requestBody = JSON.parse(pm.request.body.raw);\r",
+									"        pm.environment.set('testimonial_id',JSON.stringify(pm.response.json()._id));\r",
+									"    pm.expect(data).to.contains(requestBody);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"image\": \"https://i.postimg.cc/VkTvxvBh/roopleen.jpg\",\r\n        \"designation\": \"Ex - Vice President - PDC, uOttawa\",\r\n        \"name\": \"Roopleen Kaur\",\r\n        \"description\": \"My tenure as Vice President at PDC was nothing but valuable. I got numerous opportunities which helped me recognize and strengthen my leadership and communication skills. PDC was no less than a full- time Job which helped me grow and eventually lead me to an exciting professional path. PDC provided me a platform to interact with students from diverse backgrounds, professors, and industries. I was extremely fortunate to help and guide students with their problems. Being an international student, PDC made me miss home a little less by giving me significant relationships to be with and rely on.\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}home/testimonials/add",
+							"host": [
+								"{{URL_Endpoint}}home"
+							],
+							"path": [
+								"testimonials",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Testimonial",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"id field is not null\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(jsonbody._id).to.not.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate request body with response body\",function(){\r",
+									"    let data = pm.response.json(),\r",
+									"      requestBody = JSON.parse(pm.request.body.raw);\r",
+									"        //console.log(pm.environment.get(\"AboutUs_Description\"))\r",
+									"    pm.expect(data).to.contains(requestBody);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"637ad795cf0b686a38935ff8\",\r\n    \"image\": \"https://i.postimg.cc/J0JMgwFj/chinmaye.jpg\\n\",\r\n    \"description\": \"{{AboutUs_Description}}\",\r\n    \"name\": \"Chinmayee Mahagaonkar\",\r\n    \"designation\": \"President - PDC, uOttawa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}home/testimonials/update",
+							"host": [
+								"{{URL_Endpoint}}home"
+							],
+							"path": [
+								"testimonials",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Testimonial",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"when _id is valid\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(pm.response.json()).eq(\"Success!\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": {{testimonial_id}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}home/testimonials/delete",
+							"host": [
+								"{{URL_Endpoint}}home"
+							],
+							"path": [
+								"testimonials",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Testimonial:Invalid Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"when _id is not valid\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(pm.response.json()).eq(\"Error while deleting.\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": {{inValid_id}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}home/testimonials/delete",
+							"host": [
+								"{{URL_Endpoint}}home"
+							],
+							"path": [
+								"testimonials",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Our Volunteers",
+			"item": [
+				{
+					"name": "Get All Our Volunteers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"Validate the response contains id value and response is not empty\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody.length);\r",
+									"    for(var i=0;i<jsonbody.length;i++)\r",
+									"    {\r",
+									"        console.log(jsonbody[i]._id);\r",
+									"    }\r",
+									"    if (jsonbody.length > 0) {\r",
+									"        pm.expect(jsonbody).to.not.be.empty;\r",
+									"    } else {\r",
+									"        pm.expect(\"Response is empty\").to.equal(\"Response is not empty\");\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}ourVolunteers/all",
+							"host": [
+								"{{URL_Endpoint}}ourVolunteers"
+							],
+							"path": [
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Our Volunteers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"id field is not null\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(jsonbody._id).to.not.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate request body with response body\",function(){\r",
+									"    let data = pm.response.json(),\r",
+									"      requestBody = JSON.parse(pm.request.body.raw);\r",
+									"      pm.environment.set('volunteer_id',JSON.stringify(pm.response.json()._id));\r",
+									"    pm.expect(data).to.contains(requestBody);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"test\",\r\n    \"email\": \"test@uottawa.ca\",\r\n    \"team\": \"Program Coordinator Team\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}ourVolunteers/add",
+							"host": [
+								"{{URL_Endpoint}}ourVolunteers"
+							],
+							"path": [
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Our Volunteers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"id field is not null\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(jsonbody._id).to.not.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate request body with response body\",function(){\r",
+									"    let data = pm.response.json(),\r",
+									"      requestBody = JSON.parse(pm.request.body.raw);\r",
+									"    pm.expect(data).to.contains(requestBody);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"_id\": \"62aa238d8ea27a3e188b317d\",\r\n        \"name\": \" updated test\",\r\n        \"email\": \"test@uottawa.ca\",\r\n        \"team\": \"Program Coordinator Team\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}ourVolunteers/update",
+							"host": [
+								"{{URL_Endpoint}}ourVolunteers"
+							],
+							"path": [
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Our Volunteers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"when _id is valid\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(pm.response.json()).eq(\"Success!\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": {{volunteer_id}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}ourVolunteers/remove",
+							"host": [
+								"{{URL_Endpoint}}ourVolunteers"
+							],
+							"path": [
+								"remove"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Our Volunteers:Invalid Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"when _id is not valid\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(pm.response.json()).eq(\"Error while deleting.\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": {{inValid_id}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}ourVolunteers/remove",
+							"host": [
+								"{{URL_Endpoint}}ourVolunteers"
+							],
+							"path": [
+								"remove"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Student Associations",
+			"item": [
+				{
+					"name": "Get All Student Associations",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"Validate the response contains id value and response is not empty\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody.length);\r",
+									"    for(var i=0;i<jsonbody.length;i++)\r",
+									"    {\r",
+									"        console.log(jsonbody[i]._id);\r",
+									"    }\r",
+									"    if (jsonbody.length > 0) {\r",
+									"        pm.expect(jsonbody).to.not.be.empty;\r",
+									"    } else {\r",
+									"        pm.expect(\"Response is empty\").to.equal(\"Response is empty\");\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_Endpoint}}studentAssociations/all",
+							"host": [
+								"{{URL_Endpoint}}studentAssociations"
+							],
+							"path": [
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Student Associations",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"id field is not null\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(jsonbody._id).to.not.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate request body with response body\",function(){\r",
+									"    let data = pm.response.json(),\r",
+									"      requestBody = JSON.parse(pm.request.body.raw);\r",
+									"      pm.environment.set('studentAssociation_id',JSON.stringify(pm.response.json()._id));\r",
+									"    pm.expect(data).to.contains(requestBody);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"t1\",\r\n    \"status\": true,\r\n    \"link\": \"https://www.gespdc.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}studentAssociations/add",
+							"host": [
+								"{{URL_Endpoint}}studentAssociations"
+							],
+							"path": [
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Student Associations",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"id field is not null\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(jsonbody._id).to.not.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate request body with response body\",function(){\r",
+									"    let data = pm.response.json(),\r",
+									"      requestBody = JSON.parse(pm.request.body.raw);\r",
+									"    pm.expect(data).to.contains(requestBody);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"_id\": \"62aa24daa87e58d477879638\",\r\n        \"name\": \"testtt\",\r\n        \"status\": true,\r\n        \"link\": \"https://www.gespdc.com\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}studentAssociations/update",
+							"host": [
+								"{{URL_Endpoint}}studentAssociations"
+							],
+							"path": [
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Student Associations",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"when _id is valid\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(pm.response.json()).eq(\"Success!\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"_id\": {{studentAssociation_id}}\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}studentAssociations/remove",
+							"host": [
+								"{{URL_Endpoint}}studentAssociations"
+							],
+							"path": [
+								"remove"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Student Associations:Invalid Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"when _id is not valid\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(pm.response.json()).eq(\"Error while deleting.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"_id\": {{inValid_id}}\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}studentAssociations/remove",
+							"host": [
+								"{{URL_Endpoint}}studentAssociations"
+							],
+							"path": [
+								"remove"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Fswep programs",
+			"item": [
+				{
+					"name": "Get Fswep Programs",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"Validate the response contains id value and response is not empty\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody.length);\r",
+									"    for(var i=0;i<jsonbody.length;i++)\r",
+									"    {\r",
+									"        console.log(jsonbody[i]._id);\r",
+									"    }\r",
+									"    if (jsonbody.length > 0) {\r",
+									"        pm.expect(jsonbody).to.not.be.empty;\r",
+									"    } else {\r",
+									"        pm.expect(\"Response is empty\").to.equal(\"Response is not empty\");\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"test\",\r\n    \"active\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}fswepPrograms/all",
+							"host": [
+								"{{URL_Endpoint}}fswepPrograms"
+							],
+							"path": [
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Fswep Program",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"id field is not null\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(jsonbody._id).to.not.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate request body with response body\",function(){\r",
+									"    let data = pm.response.json(),\r",
+									"      requestBody = JSON.parse(pm.request.body.raw);\r",
+									"      pm.environment.set('fswepProgram_id',JSON.stringify(pm.response.json()._id));\r",
+									"    pm.expect(data).to.contains(requestBody);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"test\",\r\n    \"active\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}fswepPrograms/add",
+							"host": [
+								"{{URL_Endpoint}}fswepPrograms"
+							],
+							"path": [
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Fswep Program",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"id field is not null\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(jsonbody._id).to.not.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate request body with response body\",function(){\r",
+									"    let data = pm.response.json(),\r",
+									"      requestBody = JSON.parse(pm.request.body.raw);\r",
+									"    pm.expect(data).to.contains(requestBody);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"62b5f954fcea9d6de4e85644\",\r\n    \"name\": \"test updated\",\r\n    \"active\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}fswepPrograms/update",
+							"host": [
+								"{{URL_Endpoint}}fswepPrograms"
+							],
+							"path": [
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Fswep Program",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"pm.test(\"when _id is valid\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(pm.response.json()).eq(\"Success!\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": {{fswepProgram_id}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}fswepPrograms/remove",
+							"host": [
+								"{{URL_Endpoint}}fswepPrograms"
+							],
+							"path": [
+								"remove"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Fswep Program:Invalid Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"when _id is not valid\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(pm.response.json()).eq(\"Error while deleting.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": {{inValid_id}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}fswepPrograms/remove",
+							"host": [
+								"{{URL_Endpoint}}fswepPrograms"
+							],
+							"path": [
+								"remove"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "FAQs",
+			"item": [
+				{
+					"name": "Get All FAQs",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"Validate the response contains id value and response is not empty\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody.length);\r",
+									"    for(var i=0;i<jsonbody.length;i++)\r",
+									"    {\r",
+									"        console.log(jsonbody[i]._id);\r",
+									"    }\r",
+									"    if (jsonbody.length > 0) {\r",
+									"        pm.expect(jsonbody).to.not.be.empty;\r",
+									"    } else {\r",
+									"        pm.expect(\"Response is empty\").to.equal(\"Response is not empty\");\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_Endpoint}}FAQs/all",
+							"host": [
+								"{{URL_Endpoint}}FAQs"
+							],
+							"path": [
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add FAQs",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"id field is not null\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(jsonbody._id).to.not.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate request body with response body\",function(){\r",
+									"    let data = pm.response.json(),\r",
+									"      requestBody = JSON.parse(pm.request.body.raw);\r",
+									"      pm.environment.set('faqs_id',JSON.stringify(pm.response.json()._id));\r",
+									"    pm.expect(data.ans).to.contains(requestBody.ans);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ques\": \"What is the responsibility and requirements of the industry partner?\",\r\n    \"ans\":\"The company communicates the types of skills/students they are looking for and the type of tasks and/or projects they would like worked on. If there is a need for recruitment, Program coordinators can be assigned to recruit students and vets resumes, and possibly organizes teams for the company to review. In some cases, information sessions, workshops or training are organized to recruit and ensure students fit what is needed.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}FAQs/add",
+							"host": [
+								"{{URL_Endpoint}}FAQs"
+							],
+							"path": [
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update FAQs",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"id field is not null\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(jsonbody._id).to.not.null;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate request body with response body\",function(){\r",
+									"    let data = pm.response.json(),\r",
+									"      requestBody = JSON.parse(pm.request.body.raw);\r",
+									"    pm.expect(data.ans).to.contains(requestBody.ans);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"_id\": \"62b6021531c84814405e205c\",\r\n        \"ques\": \"Could you kindly let us know how the industry partnership works?\",\r\n        \"ans\": \"There are so many ways the industry partnership works. The partnership can either in form of a research/ project opportunity, coop, internship (either paid or not paid). \\n However, the company does not need to worry about course codes, semester schedules, or university bureaucracy in general. The Project Professor and the students handle that. \\n Students either work directly with company, supervised by the company ... or they work at the university, mentored at the university and check in with the company on an as needed basis. Whatever suits the company best.\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}FAQs/update",
+							"host": [
+								"{{URL_Endpoint}}FAQs"
+							],
+							"path": [
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete FAQs",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"when _id is valid\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(pm.response.json()).eq(\"Success!\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"_id\": {{faqs_id}}       \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}FAQs/remove",
+							"host": [
+								"{{URL_Endpoint}}FAQs"
+							],
+							"path": [
+								"remove"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete FAQs:Invalid Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"when _id is not valid\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(pm.response.json()).eq(\"Error while deleting.\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"_id\": {{inValid_id}}     \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}FAQs/remove",
+							"host": [
+								"{{URL_Endpoint}}FAQs"
+							],
+							"path": [
+								"remove"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Project",
+			"item": [
+				{
+					"name": "Get Projects",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"Validate the response contains id value and response is not empty\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody.length);\r",
+									"    for(var i=0;i<jsonbody.length;i++)\r",
+									"    {\r",
+									"        console.log(jsonbody[i]._id);\r",
+									"    }\r",
+									"    const lastId = jsonbody[jsonbody.length-1]._id;\r",
+									"    console.log(lastId);\r",
+									"    pm.environment.set('projects_id',JSON.stringify(lastId));\r",
+									"    if (jsonbody.length > 0) {\r",
+									"        pm.expect(jsonbody).to.not.be.empty;\r",
+									"    } else {\r",
+									"        pm.expect(\"Response is empty\").to.equal(\"Response is not empty\");\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL_Endpoint}}project",
+							"host": [
+								"{{URL_Endpoint}}project"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Project",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Test Project 1\",\r\n    \"postedOn\": \"2023-02-02\",\r\n    \"validUntil\": \"2023-02-28\",\r\n    \"description\": \"Test Description\",\r\n    \"hostedBy\": \"GES-PDC\",\r\n    \"logoUrl\": \"https://img.icons8.com/carbon-copy/2x/company.png\",\r\n    \"category\": \"Web Development,Quality Assurance,Full-stack Development\",\r\n    \"user\": [\r\n        {\r\n            \"_id\": \"5f8b7599e249bf23f8252e6d\",\r\n            \"googleId\": \"109355000245555684267\",\r\n            \"name\": \"PDC uottawa\",\r\n            \"email\": \"pdcuottawa@gmail.com\",\r\n            \"picture\": \"https://lh6.googleusercontent.com/-8Uk4ZPk9bQQ/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucmbgFLc8LHnngQNdiO4AdLZUUWmCQ/s96-c/photo.jpg\",\r\n            \"admin\": true,\r\n            \"__v\": 0\r\n        }\r\n    ],\r\n    \"contactEmail\": \"testemail@email.com\",\r\n    \"contactPhone\": \"1234567890\",\r\n    \"linkedinProfile\": \"test profile\",\r\n    \"isDeleted\": false,\r\n    \"uploadStatus\": \"none\",\r\n    \"\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}project",
+							"host": [
+								"{{URL_Endpoint}}project"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Project",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"5f9761ef90bca200170ea29b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}project/manage/:id",
+							"host": [
+								"{{URL_Endpoint}}project"
+							],
+							"path": [
+								"manage",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Project",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"\r",
+									"pm.test(\"when _id is valid\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(pm.response.json()).eq(\"Success!\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": {{projects_id}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}project/delete",
+							"host": [
+								"{{URL_Endpoint}}project"
+							],
+							"path": [
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Project:Invalid Id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//************VERIFY RESPONSE***************//\r",
+									"\r",
+									"pm.test(\"when _id is not valid\", function () {\r",
+									"    let jsonbody = JSON.parse(responseBody)\r",
+									"    console.log(jsonbody);\r",
+									"    pm.expect(pm.response.json()).eq(\"Error while deleting.\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": {{inValid_id}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_Endpoint}}project/delete",
+							"host": [
+								"{{URL_Endpoint}}project"
+							],
+							"path": [
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get Join Our Team Form Link",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//************VERIFY RESPONSE***************//\r",
+							"\r",
+							"pm.test(\"Validate the response contains id value and response is not empty\", function () {\r",
+							"    let jsonbody = JSON.parse(responseBody)\r",
+							"    console.log(jsonbody.length);\r",
+							"    for(var i=0;i<jsonbody.length;i++)\r",
+							"    {\r",
+							"        console.log(jsonbody[i]._id);\r",
+							"    }\r",
+							"    if (jsonbody.length > 0) {\r",
+							"        pm.expect(jsonbody).to.not.be.empty;\r",
+							"    } else {\r",
+							"        pm.expect(\"Response is empty\").to.equal(\"Response is not empty\");\r",
+							"    }\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL_Endpoint}}form/link",
+					"host": [
+						"{{URL_Endpoint}}form"
+					],
+					"path": [
+						"link"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Feedback Form Link",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//************VERIFY RESPONSE***************//\r",
+							"\r",
+							"pm.test(\"Validate the response contains id value and response is not empty\", function () {\r",
+							"    let jsonbody = JSON.parse(responseBody)\r",
+							"    console.log(jsonbody.length);\r",
+							"    for(var i=0;i<jsonbody.length;i++)\r",
+							"    {\r",
+							"        console.log(jsonbody[i]._id);\r",
+							"    }\r",
+							"    if (jsonbody.length > 0) {\r",
+							"        pm.expect(jsonbody).to.not.be.empty;\r",
+							"    } else {\r",
+							"        pm.expect(\"Response is empty\").to.equal(\"Response is not empty\");\r",
+							"    }\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL_Endpoint}}form/feedbackLink",
+					"host": [
+						"{{URL_Endpoint}}form"
+					],
+					"path": [
+						"feedbackLink"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Join Our Team Link",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//************VERIFY RESPONSE***************//\r",
+							"\r",
+							"pm.test(\"id field is not null\", function () {\r",
+							"    let jsonbody = JSON.parse(responseBody)\r",
+							"    console.log(jsonbody);\r",
+							"    pm.expect(jsonbody._id).to.not.null;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validate request body with response body\",function(){\r",
+							"    let data = pm.response.json(),\r",
+							"      requestBody = JSON.parse(pm.request.body.raw);\r",
+							"    pm.expect(data).to.contains(requestBody);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"_id\": \"61e9acf37288d1f0f24761f6\",\r\n        \"link\": \"https://forms.office.com/pages/responsepage.aspx?id=sdof1BV-_Uy1-nIA5U3ra0GpeYLBv-hInq2BNuBF7HhUMFhEVlRKUlMzMFFZTFJZQzhWWVgzUDI0QyQlQCN0PWcu\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL_Endpoint}}form/link/update",
+					"host": [
+						"{{URL_Endpoint}}form"
+					],
+					"path": [
+						"link",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Feedback Form Link",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//************VERIFY RESPONSE***************//\r",
+							"\r",
+							"pm.test(\"id field is not null\", function () {\r",
+							"    let jsonbody = JSON.parse(responseBody)\r",
+							"    console.log(jsonbody);\r",
+							"    pm.expect(jsonbody._id).to.not.null;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validate request body with response body\",function(){\r",
+							"    let data = pm.response.json(),\r",
+							"      requestBody = JSON.parse(pm.request.body.raw);\r",
+							"    pm.expect(data).to.contains(requestBody);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"_id\":\"637af7052c65f58b385433bd\",\r\n    \"link\":\"abc2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL_Endpoint}}form/feedbackLink/update",
+					"host": [
+						"{{URL_Endpoint}}form"
+					],
+					"path": [
+						"feedbackLink",
+						"update"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"//let testNamePrefix = pm.variables.get('requestName')+\":\";",
+					"",
+					"//const utils = eval(global.loadUtils);",
+					"",
+					"pm.test(\"Validate status 200\", function()",
+					"{",
+					"    pm.response.to.have.status(200);",
+					"})"
+				]
+			}
+		}
+	]
+}
